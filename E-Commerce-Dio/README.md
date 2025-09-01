@@ -1,18 +1,49 @@
-## Getting Started
+### Padrões de Projeto: E-Commerce Simplificado
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto é uma solução prática para o desafio de explorar e aplicar os conceitos de **Padrões de Projeto** em Java. Ele simula um sistema de e-commerce básico, utilizando três padrões de projeto fundamentais para demonstrar como eles podem organizar e tornar o código mais robusto.
 
-## Folder Structure
+## Padrões de Projeto Utilizados
 
-The workspace contains two folders by default, where:
+  - **Singleton:** O `GerenciadorDeEstoque` foi implementado como um Singleton. Isso garante que a aplicação tenha apenas uma única instância do gerenciador, evitando problemas de concorrência e assegurando que todos os módulos acessem o mesmo estado do estoque.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+  - **Strategy:** O `PagamentoStrategy` é o núcleo deste padrão. Ele permite que o sistema de checkout mude o método de pagamento dinamicamente (por exemplo, de Cartão de Crédito para Boleto) sem precisar alterar a classe principal.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+  - **Facade:** O `ECommerceFacade` age como uma interface unificada e simplificada para o cliente. Ele esconde a complexidade do processo de finalização da compra (que envolve verificar estoque, processar pagamento e enviar notificações), expondo apenas um método simples `finalizarCompra()`.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Estrutura do Projeto
 
-## Dependency Management
+Para simplificar o desenvolvimento e evitar problemas de compilação, todos os arquivos Java estão no mesmo pacote `br.com.dio.ecommerce` e são organizados da seguinte forma:
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+```
+src/
+└── br/
+    └── com/
+        └── dio/
+            └── ecommerce/
+                ├── CarrinhoDeCompras.java
+                ├── ECommerceFacade.java
+                ├── GerenciadorDeEstoque.java
+                ├── Main.java
+                ├── PagamentoBoleto.java
+                ├── PagamentoCartaoCredito.java
+                ├── PagamentoStrategy.java
+                └── Produto.java
+```
+
+## Pré-requisitos
+
+Para executar este projeto, você precisa ter o ambiente de desenvolvimento Java (JDK) instalado em sua máquina.
+
+## Como Executar
+
+1.  **Clone o repositório:**
+
+    ```bash
+    git clone https://github.com/dinarteefilho/e-commerce-dio.git
+    ```
+
+2.  **Abra o projeto:**
+    Abra a pasta do projeto em sua IDE de preferência (como VS Code, IntelliJ ou Eclipse).
+
+3.  **Execute a classe `Main`:**
+    Rode o método `main()` da classe `br.com.dio.ecommerce.Main` para ver a demonstração do sistema de e-commerce. O console exibirá as etapas da compra e as diferentes estratégias de pagamento em ação.
